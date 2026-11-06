@@ -141,7 +141,7 @@ If the App changes in ways that affect how data is handled (for example adding a
 
 ## 8. Contact
 
-Hsinti Wu (Sentira Labs)<br>
+Support<br>
 Email: [pawlaris@sentiralabs.app](mailto:pawlaris@sentiralabs.app)
 
 ---

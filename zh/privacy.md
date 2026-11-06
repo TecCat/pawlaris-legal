@@ -142,7 +142,7 @@ App 與伺服器之間的傳輸皆使用 HTTPS 加密。
 
 ## 8. 聯絡我們
 
-Hsinti Wu（Sentira Labs）<br>
+Support<br>
 Email：[pawlaris@sentiralabs.app](mailto:pawlaris@sentiralabs.app)
 
 
