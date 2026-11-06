@@ -12,7 +12,7 @@ alt_zh: /zh/privacy/
 
 **Effective date: 2026-11-06**
 
-Pawlaris ("the App") is developed and operated by Hsinti Wu (Sentira Labs, "we", "us"). This policy explains what data we process when you use the App, why, who helps us process it, and how you can control it.
+Pawlaris ("the App") is developed and operated by Sentira Labs ("we", "us"). This policy explains what data we process when you use the App, why, who helps us process it, and how you can control it.
 
 ## Summary
 
