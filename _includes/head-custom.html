@@ -1,0 +1,6 @@
+{% comment %}中英對照頁（隱私政策、支援）：front matter 設 alt_en / alt_zh 就輸出 hreflang{% endcomment %}
+{% if page.alt_en and page.alt_zh %}
+<link rel="alternate" hreflang="en" href="{{ page.alt_en | absolute_url }}">
+<link rel="alternate" hreflang="zh-Hant" href="{{ page.alt_zh | absolute_url }}">
+<link rel="alternate" hreflang="x-default" href="{{ page.alt_en | absolute_url }}">
+{% endif %}
