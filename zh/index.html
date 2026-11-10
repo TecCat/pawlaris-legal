@@ -25,24 +25,11 @@ img{max-width:100%}
 .lp-h1{font-size:38px !important}
 .lp-h2{font-size:30px !important}
 }
-/* 北極星指引動畫（取自 app 冷啟動 Splash #142）：預設即終態；JS 只在可動畫時先 .armed 退回起始狀態，進畫面加 .play */
+/* 關於區：北極星指引的靜態畫面（app Splash #142 的終態）。動畫只在 hero 手機播一次，這裡不重播 */
 .ns{display:block;width:100%;max-width:400px;height:auto}
 .ns .ns-star{transform:translateY(83px)}
-.ns .ns-mark{opacity:0}
 .ns .ns-reveal{stroke-dasharray:1;stroke-dashoffset:0}
 .ns .ns-paw,.ns .ns-word{transform-box:fill-box;transform-origin:center}
-.ns.armed .ns-star{transform:translateY(174.4px) scale(.406)}
-.ns.armed .ns-glow{opacity:0}
-.ns.armed .ns-mark{opacity:1}
-.ns.armed .ns-reveal{stroke-dashoffset:1}
-.ns.armed .ns-paw{opacity:0;transform:scale(.6)}
-.ns.armed .ns-word{opacity:0;transform:translateY(8px)}
-.ns.armed.play .ns-star{transform:translateY(83px);transition:transform 1s cubic-bezier(.34,1.35,.64,1) .3s}
-.ns.armed.play .ns-glow{opacity:1;transition:opacity .8s ease-out .5s}
-.ns.armed.play .ns-mark{opacity:0;transition:opacity .7s ease-out .3s}
-.ns.armed.play .ns-reveal{stroke-dashoffset:0;transition:stroke-dashoffset 1.4s ease-in-out 1s}
-.ns.armed.play .ns-paw{opacity:1;transform:none;transition:opacity .4s ease-out,transform .4s ease-out;transition-delay:var(--d)}
-.ns.armed.play .ns-word{opacity:1;transform:none;transition:opacity .7s ease-out 2.3s,transform .7s ease-out 2.3s}
 /* hero 手機畫面先播 app 冷啟動 Splash（#142），約 3.4s 後淡出露出首頁截圖。預設不顯示：沒有 JS／減少動態效果時直接看到截圖 */
 .hs{position:absolute;inset:0;width:100%;height:100%;border-radius:42px;display:none}
 .hs.on{display:block}
@@ -131,13 +118,11 @@ img{max-width:100%}
 <defs>
 <radialGradient id="ns-glow-g"><stop offset="0" stop-color="#6dbeae" stop-opacity=".55"/><stop offset="1" stop-color="#6dbeae" stop-opacity="0"/></radialGradient>
 <filter id="ns-shadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#4f968b" flood-opacity=".35"/></filter>
-<clipPath id="ns-clip"><rect x="120" y="100" width="120" height="120" rx="27"/></clipPath>
 <mask id="ns-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="360" height="320"><path class="ns-reveal" d="M108 307.2 Q280.8 236.8 180 160" pathLength="1" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/></mask>
 </defs>
 <rect width="360" height="320" rx="28" fill="#e8f2ef"/>
 <path d="M108 307.2 Q280.8 236.8 180 160" fill="none" stroke="#6dbeae" stroke-opacity=".55" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 9" mask="url(#ns-mask)"/>
 <g transform="translate(158.9 266.8) rotate(58.7)"><g class="ns-paw" style="--d:1.3s" fill="#e6a66f"><ellipse cx="0" cy="3.2" rx="5" ry="4.2"/><circle cx="-5.6" cy="-3.2" r="2.1"/><circle cx="-2" cy="-6.9" r="2.2"/><circle cx="2" cy="-6.9" r="2.2"/><circle cx="5.6" cy="-3.2" r="2.1"/></g></g><g transform="translate(213.0 259.0) rotate(41.0)"><g class="ns-paw" style="--d:1.6s" fill="#e6a66f"><ellipse cx="0" cy="3.2" rx="5" ry="4.2"/><circle cx="-5.6" cy="-3.2" r="2.1"/><circle cx="-2" cy="-6.9" r="2.2"/><circle cx="2" cy="-6.9" r="2.2"/><circle cx="5.6" cy="-3.2" r="2.1"/></g></g><g transform="translate(203.0 218.8) rotate(6.6)"><g class="ns-paw" style="--d:1.9s" fill="#e6a66f"><ellipse cx="0" cy="3.2" rx="5" ry="4.2"/><circle cx="-5.6" cy="-3.2" r="2.1"/><circle cx="-2" cy="-6.9" r="2.2"/><circle cx="2" cy="-6.9" r="2.2"/><circle cx="5.6" cy="-3.2" r="2.1"/></g></g><g transform="translate(221.3 183.2) rotate(-31.4)"><g class="ns-paw" style="--d:2.2s" fill="#e6a66f"><ellipse cx="0" cy="3.2" rx="5" ry="4.2"/><circle cx="-5.6" cy="-3.2" r="2.1"/><circle cx="-2" cy="-6.9" r="2.2"/><circle cx="2" cy="-6.9" r="2.2"/><circle cx="5.6" cy="-3.2" r="2.1"/></g></g>
-<image class="ns-mark" href="../assets/brandmark.png" x="120" y="100" width="120" height="120" clip-path="url(#ns-clip)"/>
 <g transform="translate(180 0)"><g class="ns-star"><circle class="ns-glow" r="77" fill="url(#ns-glow-g)"/><path d="M0 -32Q5.235 -5.235 32 0Q5.235 5.235 0 32Q-5.235 5.235 -32 0Q-5.235 -5.235 0 -32Z" fill="#ffffff" filter="url(#ns-shadow)"/></g></g>
 <text class="ns-word" x="180" y="148" text-anchor="middle" font-family="New York, ui-serif, Georgia, serif" font-size="30" font-weight="700" fill="#12332e">Pawlaris</text>
 </svg>
@@ -335,15 +320,6 @@ img{max-width:100%}
 </footer>
 
 </div>
-<script>
-// 北極星動畫：進入畫面播一次；沒有 JS、或系統開啟「減少動態效果」時直接顯示終態
-(function(){var el=document.querySelector('.ns');if(!el||!('IntersectionObserver' in window))return;
-if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-el.classList.add('armed');
-var io=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;io.disconnect();
-requestAnimationFrame(function(){requestAnimationFrame(function(){el.classList.add('play');});});},{threshold:.4});
-io.observe(el);})();
-</script>
 <script>
 // hero 手機：先播 app Splash，再淡出露出首頁截圖；減少動態效果時不播
 (function(){var el=document.querySelector('.hs');if(!el||!('IntersectionObserver' in window))return;
