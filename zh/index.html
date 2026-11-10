@@ -25,6 +25,24 @@ img{max-width:100%}
 .lp-h1{font-size:38px !important}
 .lp-h2{font-size:30px !important}
 }
+/* 北極星指引動畫（取自 app 冷啟動 Splash #142）：預設即終態；JS 只在可動畫時先 .armed 退回起始狀態，進畫面加 .play */
+.ns{display:block;width:100%;max-width:400px;height:auto}
+.ns .ns-star{transform:translateY(83px)}
+.ns .ns-mark{opacity:0}
+.ns .ns-reveal{stroke-dasharray:1;stroke-dashoffset:0}
+.ns .ns-paw,.ns .ns-word{transform-box:fill-box;transform-origin:center}
+.ns.armed .ns-star{transform:translateY(174.4px) scale(.406)}
+.ns.armed .ns-glow{opacity:0}
+.ns.armed .ns-mark{opacity:1}
+.ns.armed .ns-reveal{stroke-dashoffset:1}
+.ns.armed .ns-paw{opacity:0;transform:scale(.6)}
+.ns.armed .ns-word{opacity:0;transform:translateY(8px)}
+.ns.armed.play .ns-star{transform:translateY(83px);transition:transform 1s cubic-bezier(.34,1.35,.64,1) .3s}
+.ns.armed.play .ns-glow{opacity:1;transition:opacity .8s ease-out .5s}
+.ns.armed.play .ns-mark{opacity:0;transition:opacity .7s ease-out .3s}
+.ns.armed.play .ns-reveal{stroke-dashoffset:0;transition:stroke-dashoffset 1.4s ease-in-out 1s}
+.ns.armed.play .ns-paw{opacity:1;transform:none;transition:opacity .4s ease-out,transform .4s ease-out;transition-delay:var(--d)}
+.ns.armed.play .ns-word{opacity:1;transform:none;transition:opacity .7s ease-out 2.3s,transform .7s ease-out 2.3s}
 </style>
 </head>
 <body>
@@ -36,6 +54,7 @@ img{max-width:100%}
 <span style="font-size: 20px; font-weight: 700;">Pawlaris</span>
 </a>
 <nav aria-label="主要" style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px; font-size: 15px;">
+<a href="#about" style="color: #4a4a4a; text-decoration: none;">關於</a>
 <a href="#features" style="color: #4a4a4a; text-decoration: none;">功能</a>
 <a href="#pricing" style="color: #4a4a4a; text-decoration: none;">方案</a>
 <a href="#privacy" style="color: #4a4a4a; text-decoration: none;">隱私</a>
@@ -51,7 +70,7 @@ img{max-width:100%}
 <h1 class="lp-h1" style="margin: 0; font-family: &quot;New York&quot;, ui-serif, &quot;Noto Serif TC&quot;, Georgia, serif; font-weight: 700; font-size: 56px; line-height: 1.2; letter-spacing: -0.5px;">這款食品，真的適合你家毛孩嗎？</h1>
 <p style="margin: 0; font-size: 19px; color: #4a4a4a; max-width: 520px;">每隻毛孩的飲食需求都不同。拍下寵物食品成分表，Pawlaris 幫你檢查過敏原、潛在有害成分與營養資訊，在餵食前多一分了解。</p>
 <div id="download" style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px;">
-<a href="https://apps.apple.com/app/id6791094403" style="display: inline-flex; align-items: center; height: 56px; padding: 0 28px; border-radius: 14px; background: #1a1a1a; color: #ffffff; font-size: 17px; font-weight: 700; text-decoration: none;">在 App Store 下載</a>
+<a href="https://apps.apple.com/app/pawlaris-pet-food-scanner/id6791094403" style="display: inline-flex; border-radius: 10px;"><img src="../assets/appstore-badge-black-en.svg" width="162" height="54" alt="在 App Store 下載" style="display: block;"></a>
 </div>
 <p style="margin: 0; font-size: 15px; color: #4a4a4a;"><strong style="color: #12332e;">前 5 次完整分析免費</strong>・用完後過敏原提醒仍可持續免費使用</p>
 </div>
@@ -68,6 +87,32 @@ img{max-width:100%}
 <span style="display: flex; align-items: center; gap: 10px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3a8276" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path><path d="M3 3l18 18"></path></svg>無需註冊帳號</span>
 <span style="display: flex; align-items: center; gap: 10px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3a8276" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="3"></rect><circle cx="12" cy="13" r="3.5"></circle><path d="M8 6l1.5-2h5L16 6"></path></svg>成分表照片不保存</span>
 <span style="display: flex; align-items: center; gap: 10px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3a8276" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"></rect><path d="M11 18h2"></path></svg>紀錄保留在你的 iPhone</span>
+</div>
+</section>
+
+<section id="about" aria-labelledby="about-h" style="max-width: 1120px; margin: 0 auto; padding: 96px 24px 0; display: flex; flex-wrap: wrap; align-items: center; gap: 56px;">
+<div style="flex: 1 1 320px; display: flex; justify-content: center;">
+<svg class="ns" viewBox="0 0 360 320" aria-hidden="true" focusable="false">
+<defs>
+<radialGradient id="ns-glow-g"><stop offset="0" stop-color="#6dbeae" stop-opacity=".55"/><stop offset="1" stop-color="#6dbeae" stop-opacity="0"/></radialGradient>
+<filter id="ns-shadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#4f968b" flood-opacity=".35"/></filter>
+<clipPath id="ns-clip"><rect x="120" y="100" width="120" height="120" rx="27"/></clipPath>
+<mask id="ns-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="360" height="320"><path class="ns-reveal" d="M108 307.2 Q280.8 236.8 180 160" pathLength="1" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/></mask>
+</defs>
+<rect width="360" height="320" rx="28" fill="#e8f2ef"/>
+<path d="M108 307.2 Q280.8 236.8 180 160" fill="none" stroke="#6dbeae" stroke-opacity=".55" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 9" mask="url(#ns-mask)"/>
+<g transform="translate(158.9 266.8) rotate(58.7)"><g class="ns-paw" style="--d:1.3s" fill="#e6a66f"><ellipse cx="0" cy="3.2" rx="5" ry="4.2"/><circle cx="-5.6" cy="-3.2" r="2.1"/><circle cx="-2" cy="-6.9" r="2.2"/><circle cx="2" cy="-6.9" r="2.2"/><circle cx="5.6" cy="-3.2" r="2.1"/></g></g><g transform="translate(213.0 259.0) rotate(41.0)"><g class="ns-paw" style="--d:1.6s" fill="#e6a66f"><ellipse cx="0" cy="3.2" rx="5" ry="4.2"/><circle cx="-5.6" cy="-3.2" r="2.1"/><circle cx="-2" cy="-6.9" r="2.2"/><circle cx="2" cy="-6.9" r="2.2"/><circle cx="5.6" cy="-3.2" r="2.1"/></g></g><g transform="translate(203.0 218.8) rotate(6.6)"><g class="ns-paw" style="--d:1.9s" fill="#e6a66f"><ellipse cx="0" cy="3.2" rx="5" ry="4.2"/><circle cx="-5.6" cy="-3.2" r="2.1"/><circle cx="-2" cy="-6.9" r="2.2"/><circle cx="2" cy="-6.9" r="2.2"/><circle cx="5.6" cy="-3.2" r="2.1"/></g></g><g transform="translate(221.3 183.2) rotate(-31.4)"><g class="ns-paw" style="--d:2.2s" fill="#e6a66f"><ellipse cx="0" cy="3.2" rx="5" ry="4.2"/><circle cx="-5.6" cy="-3.2" r="2.1"/><circle cx="-2" cy="-6.9" r="2.2"/><circle cx="2" cy="-6.9" r="2.2"/><circle cx="5.6" cy="-3.2" r="2.1"/></g></g>
+<image class="ns-mark" href="../assets/brandmark.png" x="120" y="100" width="120" height="120" clip-path="url(#ns-clip)"/>
+<g transform="translate(180 0)"><g class="ns-star"><circle class="ns-glow" r="77" fill="url(#ns-glow-g)"/><path d="M0 -32Q5.235 -5.235 32 0Q5.235 5.235 0 32Q-5.235 5.235 -32 0Q-5.235 -5.235 0 -32Z" fill="#ffffff" filter="url(#ns-shadow)"/></g></g>
+<text class="ns-word" x="180" y="148" text-anchor="middle" font-family="New York, ui-serif, Georgia, serif" font-size="30" font-weight="700" fill="#12332e">Pawlaris</text>
+</svg>
+</div>
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.8px; color: #6b6b6b;">關於 PAWLARIS</span>
+<h2 class="lp-h2" id="about-h" style="margin: 0; font-family: &quot;New York&quot;, ui-serif, &quot;Noto Serif TC&quot;, Georgia, serif; font-weight: 700; font-size: 40px; line-height: 1.25;">循著北極星，陪毛孩走在健康的路上</h2>
+<p style="margin: 0; font-size: 17px; color: #4a4a4a;">幾百年來，旅人靠北極星（Polaris）辨認方向。Pawlaris 的名字由此而來，想做的事也一樣。寵物食品標示又長又難讀，Pawlaris 幫你整理成幾個真正重要的重點：過敏原、需要留意的成分，以及營養。在照顧毛孩日常的路上，每一碗都能選得更安心。</p>
+<p style="margin: 0; font-size: 17px; color: #4a4a4a;">Pawlaris 是指引，不是獸醫。它提供教育性質的參考資訊，幫你問出更好的問題；毛孩的飲食與健康，最後仍以獸醫師的建議為準。</p>
+<p style="margin: 0; font-size: 15px; color: #6b6b6b;">由 <a href="https://www.sentiralabs.app/zh/">Sentira Labs</a> 製作。我們做小而安靜的 app，給人，也給他們心愛的毛孩。</p>
 </div>
 </section>
 
@@ -233,7 +278,7 @@ img{max-width:100%}
 <div style="background: #6dbeae; border-radius: 24px; padding: 56px 40px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;">
 <h2 class="lp-h2" id="cta" style="margin: 0; font-family: &quot;New York&quot;, ui-serif, &quot;Noto Serif TC&quot;, Georgia, serif; font-weight: 700; font-size: 36px; line-height: 1.25; color: #12332e;">下一罐飼料，先掃再餵</h2>
 <p style="margin: 0; font-size: 17px; color: #12332e;">前 5 次完整分析免費，過敏原提醒持續免費。</p>
-<a href="https://apps.apple.com/app/id6791094403" style="display: inline-flex; align-items: center; height: 56px; padding: 0 28px; border-radius: 14px; background: #1a1a1a; color: #ffffff; font-size: 17px; font-weight: 700; text-decoration: none;">在 App Store 下載</a>
+<a href="https://apps.apple.com/app/pawlaris-pet-food-scanner/id6791094403" style="display: inline-flex; border-radius: 10px;"><img src="../assets/appstore-badge-black-en.svg" width="162" height="54" alt="在 App Store 下載" style="display: block;"></a>
 </div>
 </section>
 
@@ -255,5 +300,14 @@ img{max-width:100%}
 </footer>
 
 </div>
+<script>
+// 北極星動畫：進入畫面播一次；沒有 JS、或系統開啟「減少動態效果」時直接顯示終態
+(function(){var el=document.querySelector('.ns');if(!el||!('IntersectionObserver' in window))return;
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+el.classList.add('armed');
+var io=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;io.disconnect();
+requestAnimationFrame(function(){requestAnimationFrame(function(){el.classList.add('play');});});},{threshold:.4});
+io.observe(el);})();
+</script>
 </body>
 </html>
