@@ -2,3 +2,6 @@ title: Pawlaris
 description: Pawlaris legal documents
 lang: en
 theme: jekyll-theme-primer
+# Universal Link（petnutri-prototype #183）：Jekyll 預設不發布以點開頭的資料夾
+include:
+  - .well-known
