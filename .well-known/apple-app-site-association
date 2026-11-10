@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["8UARB6LSWA.com.noseknows.app"],
+        "components": [
+          { "/": "/p/*", "comment": "分享的產品連結" },
+          { "/": "/app", "comment": "推薦 App" },
+          { "/": "/app/*", "comment": "推薦 App" }
+        ]
+      }
+    ]
+  }
+}
