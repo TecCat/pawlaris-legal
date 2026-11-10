@@ -41,6 +41,24 @@ img{max-width:100%}
 .ns.armed.play .ns-reveal{stroke-dashoffset:0;transition:stroke-dashoffset 1.4s ease-in-out 1s}
 .ns.armed.play .ns-paw{opacity:1;transform:none;transition:opacity .4s ease-out,transform .4s ease-out;transition-delay:var(--d)}
 .ns.armed.play .ns-word{opacity:1;transform:none;transition:opacity .7s ease-out 2.3s,transform .7s ease-out 2.3s}
+/* hero 手機畫面先播 app 冷啟動 Splash（#142），約 3.4s 後淡出露出首頁截圖。預設不顯示：沒有 JS／減少動態效果時直接看到截圖 */
+.hs{position:absolute;inset:0;width:100%;height:100%;border-radius:42px;display:none}
+.hs.on{display:block}
+.hs .hs-star{transform:translateY(169.5px)}
+.hs .hs-paw,.hs .hs-word{transform-box:fill-box;transform-origin:center}
+.hs .hs-reveal{stroke-dasharray:1;stroke-dashoffset:0}
+.hs.on .hs-star{transform:translateY(337px) scale(.41)}
+.hs.on .hs-glow{opacity:0}
+.hs.on .hs-reveal{stroke-dashoffset:1}
+.hs.on .hs-paw{opacity:0;transform:scale(.6)}
+.hs.on .hs-word{opacity:0;transform:translateY(6px)}
+.hs.on.play .hs-star{transform:translateY(169.5px);transition:transform 1s cubic-bezier(.34,1.35,.64,1) .3s}
+.hs.on.play .hs-glow{opacity:1;transition:opacity .8s ease-out .5s}
+.hs.on.play .hs-mark{opacity:0;transition:opacity .7s ease-out .3s}
+.hs.on.play .hs-reveal{stroke-dashoffset:0;transition:stroke-dashoffset 1.4s ease-in-out 1s}
+.hs.on.play .hs-paw{opacity:1;transform:none;transition:opacity .4s ease-out,transform .4s ease-out;transition-delay:var(--d)}
+.hs.on.play .hs-word{opacity:1;transform:none;transition:opacity .7s ease-out 2.3s,transform .7s ease-out 2.3s}
+.hs.on.done{opacity:0;transition:opacity .6s ease-out;pointer-events:none}
 </style>
 </head>
 <body>
@@ -74,7 +92,24 @@ img{max-width:100%}
 </div>
 <div style="flex: 1 1 320px; display: flex; justify-content: center;">
 <div style="width: 300px; padding: 10px; border-radius: 52px; background: #12332e; box-shadow: 0 24px 60px rgba(30, 80, 70, 0.22);">
+<div style="position: relative;">
 <img src="assets/en/home.jpg" alt="Pawlaris home screen: find Mochi's dinner today, latest analysis 88 / 100" style="display: block; width: 100%; border-radius: 42px;">
+<svg class="hs" viewBox="0 0 300 652" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+<defs>
+<radialGradient id="hs-glow-g"><stop offset="0" stop-color="#6dbeae" stop-opacity=".55"/><stop offset="1" stop-color="#6dbeae" stop-opacity="0"/></radialGradient>
+<filter id="hs-shadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#4f968b" flood-opacity=".35"/></filter>
+<clipPath id="hs-clip"><rect x="104" y="280" width="92" height="92" rx="21"/></clipPath>
+<mask id="hs-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="300" height="652"><path class="hs-reveal" d="M90 625.9 Q234 482.5 150 326" pathLength="1" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/></mask>
+</defs>
+<rect width="300" height="652" fill="#e8f2ef"/>
+<path d="M90 625.9 Q234 482.5 150 326" fill="none" stroke="#6dbeae" stroke-opacity=".55" stroke-width="2" stroke-linecap="round" stroke-dasharray="1.5 7" mask="url(#hs-mask)"/>
+<g transform="translate(129.6 562.0) rotate(34.0) scale(.76)"><g class="hs-paw" style="--d:1.3s" fill="#e6a66f"><ellipse cx="0" cy="3.2" rx="5" ry="4.2"/><circle cx="-5.6" cy="-3.2" r="2.1"/><circle cx="-2" cy="-6.9" r="2.2"/><circle cx="2" cy="-6.9" r="2.2"/><circle cx="5.6" cy="-3.2" r="2.1"/></g></g><g transform="translate(178.8 512.7) rotate(19.6) scale(.76)"><g class="hs-paw" style="--d:1.6s" fill="#e6a66f"><ellipse cx="0" cy="3.2" rx="5" ry="4.2"/><circle cx="-5.6" cy="-3.2" r="2.1"/><circle cx="-2" cy="-6.9" r="2.2"/><circle cx="2" cy="-6.9" r="2.2"/><circle cx="5.6" cy="-3.2" r="2.1"/></g></g><g transform="translate(170.0 448.6) rotate(2.7) scale(.76)"><g class="hs-paw" style="--d:1.9s" fill="#e6a66f"><ellipse cx="0" cy="3.2" rx="5" ry="4.2"/><circle cx="-5.6" cy="-3.2" r="2.1"/><circle cx="-2" cy="-6.9" r="2.2"/><circle cx="2" cy="-6.9" r="2.2"/><circle cx="5.6" cy="-3.2" r="2.1"/></g></g><g transform="translate(184.9 385.5) rotate(-14.0) scale(.76)"><g class="hs-paw" style="--d:2.2s" fill="#e6a66f"><ellipse cx="0" cy="3.2" rx="5" ry="4.2"/><circle cx="-5.6" cy="-3.2" r="2.1"/><circle cx="-2" cy="-6.9" r="2.2"/><circle cx="2" cy="-6.9" r="2.2"/><circle cx="5.6" cy="-3.2" r="2.1"/></g></g>
+<image class="hs-mark" href="assets/brandmark.png" x="104" y="280" width="92" height="92" clip-path="url(#hs-clip)"/>
+<g transform="translate(150 0)"><g class="hs-star"><circle class="hs-glow" r="59" fill="url(#hs-glow-g)"/><path d="M0 -24.4Q3.992 -3.992 24.4 0Q3.992 3.992 0 24.4Q-3.992 3.992 -24.4 0Q-3.992 -3.992 0 -24.4Z" fill="#ffffff" filter="url(#hs-shadow)"/></g></g>
+<g class="hs-word"><text x="150" y="262" text-anchor="middle" font-family="New York, ui-serif, Georgia, serif" font-size="26" font-weight="700" fill="#12332e">Pawlaris</text>
+<text x="150" y="286" text-anchor="middle" font-family="-apple-system, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="600" fill="#4a4a4a">Your north star for pet nutrition</text></g>
+</svg>
+</div>
 </div>
 </div>
 </section>
@@ -107,7 +142,7 @@ img{max-width:100%}
 </div>
 <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
 <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.8px; color: #6b6b6b;">ABOUT PAWLARIS</span>
-<h2 class="lp-h2" id="about-h" style="margin: 0; font-family: &quot;New York&quot;, ui-serif, Georgia, serif; font-weight: 700; font-size: 44px; line-height: 1.15;">Your north star for pet nutrition</h2>
+<h2 class="lp-h2" id="about-h" style="margin: 0; font-family: &quot;New York&quot;, ui-serif, Georgia, serif; font-weight: 700; font-size: 44px; line-height: 1.15;">Your north star for <span style="white-space: nowrap;">pet nutrition</span></h2>
 <p style="margin: 0; font-size: 17px; color: #4a4a4a;">For centuries, travelers found their way by Polaris, the North Star. Pawlaris takes its name, and its job, from that star. Pet food labels are long and hard to read, so Pawlaris turns them into the few points that matter for your pet: allergens, flagged ingredients and nutrition. That way you can choose with more confidence, one bowl at a time.</p>
 <p style="margin: 0; font-size: 17px; color: #4a4a4a;">Pawlaris is a guide, not a vet. It gives you educational information so you can ask better questions, and your veterinarian always has the final word on your pet’s diet and health.</p>
 <p style="margin: 0; font-size: 15px; color: #6b6b6b;">Made by <a href="https://www.sentiralabs.app/">Sentira Labs</a>, makers of small, quiet apps for people and the pets they love.</p>
@@ -306,6 +341,20 @@ el.classList.add('armed');
 var io=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;io.disconnect();
 requestAnimationFrame(function(){requestAnimationFrame(function(){el.classList.add('play');});});},{threshold:.4});
 io.observe(el);})();
+</script>
+<script>
+// hero 手機：先播 app Splash，再淡出露出首頁截圖；減少動態效果時不播
+(function(){var el=document.querySelector('.hs');if(!el||!('IntersectionObserver' in window))return;
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var started=false,seen=false;el.classList.add('on');
+function play(){if(started)return;started=true;el.getBoundingClientRect();
+setTimeout(function(){el.classList.add('play');},30);
+setTimeout(function(){el.classList.add('done');setTimeout(function(){el.classList.remove('on');},700);},3500);}
+// 手機版截圖在首屏下方：進畫面才播，免得使用者滑到時已經播完
+var io=new IntersectionObserver(function(es){seen=true;if(es[0].isIntersecting){io.disconnect();play();}},{threshold:.35});
+io.observe(el);
+// 保險：觀察器一載入就會回報一次（不論在不在畫面內）。3 秒內完全沒回報 = 觀察器失效，撤掉覆蓋層，截圖絕不被擋住
+setTimeout(function(){if(!seen&&!started){started=true;io.disconnect();el.classList.remove('on');}},3000);})();
 </script>
 </body>
 </html>
